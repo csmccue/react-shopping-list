@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { useTodos } from '../../hooks/useTodos';
-import { toggleTodoItem, createTodoItem } from '../../services/items';
+import { toggleTodoItem, createTodoItem } from '../../services/todo';
 import './Todo.css';
 
 export default function Todo() {
@@ -17,7 +17,7 @@ export default function Todo() {
     try {
       const updatedTodo = await toggleTodoItem(todo);
       setTodos((prevTodos) =>
-        prevTodos.map((prevTodo) => (prevTodo.id === todo.id ? updatedTodo: prevTodo))
+        prevTodos.map((prevTodo) => (prevTodo.id === todo.id ? updatedTodo : prevTodo))
       );
     } catch (e) {
       //eslint-disable-next-line no-console
@@ -29,14 +29,12 @@ export default function Todo() {
     try {
       await createTodoItem(description);
       setTodos((prev) => [...prev, (description)]);
-      setName('');
+      setDescription('');
     } catch (e) {
       //eslint-disable-next-line no-console
       console.error(e.message);
     }
   };
-
-
   return (
     <main>
       <div>
