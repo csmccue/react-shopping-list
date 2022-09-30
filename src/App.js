@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Todo />
       <Switch>
         <Route path="/auth/:type" component={Auth} />
         <Route path="/todo" component={Todo} />

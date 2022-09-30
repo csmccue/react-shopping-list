@@ -10,9 +10,27 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const { user, setUser } = useContext(UserContext);
 
+  const submitAuth = async () => {
+    const userResp = await authUser(email, password, type);
+    setUser(userResp);
+    setEmail('');
+    setPassword('');
+  };
+  if (user) {
+    return <Redirect to="/todo" />;
+  }
+
   return (
     <>
-      <div>Hello There</div>
+      <div>We out here authenticating
+        <nav>
+          <NavLink to="/auth/sign-in">Sign In</NavLink>
+          <NavLink to="/auth/sign-up">Sign Up</NavLink>
+          <div>
+            <button onClick={submitAuth}>add me fam</button>
+          </div>
+        </nav>
+      </div>
     </>
   );
 
