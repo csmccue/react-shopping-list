@@ -24,8 +24,27 @@ export default function Auth() {
     <>
       <div>We out here authenticating
         <nav>
-          <NavLink to="/auth/sign-in">Sign In</NavLink>
-          <NavLink to="/auth/sign-up">Sign Up</NavLink>
+          <div>
+            <NavLink to="/auth/sign-in">Sign In</NavLink>
+            <NavLink to="/auth/sign-up">Sign Up</NavLink>
+          </div>
+          <div>
+            <input
+              type="email"
+              placeholder="name@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              className="input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
           <div>
             <button onClick={submitAuth}>add me fam</button>
           </div>
