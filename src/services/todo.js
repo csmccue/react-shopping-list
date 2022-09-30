@@ -1,23 +1,20 @@
 import { checkError, client } from './client';
 
 export async function getTodoItems() {
-  // fill out with supabase details
-  const response = await client.from('*').select();
+  const response = await client.from('todos').select().order('id');
   return checkError(response);
 }
 
-export async function createTodoItem(name) {
-    // fill out with supa details
-  const response = await client.from('*').insert([{ name }]);
+export async function createTodoItem(todo) {
+  const response = await client.from('todos').insert(todo).single();
   return checkError(response);
 }
 
-export async function toggleTodoItem({ id, done }) {
-  // fill out with supa details
+export async function toggleTodoItem({ id, complete }) {
   const response = await client
-    .from ('*')
-    .update({ done: !done })
-    .match({ id })
+    .from ('todos')
+    .update({ complete: !complete })
+    .match({ id: id })
     .single();
 
   return checkError(response);
