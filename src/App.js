@@ -8,8 +8,13 @@ import Todo from './components/Todo';
 function App() {
   return (
     <div className="App">
+      <Header />
+      <Switch>
+        <Route path="/auth/:type" component={Auth} />
+        <Route path="/main" component={Todo} />
+        <Route exact path="/"></Route>
+      </Switch>
     </div>
   );
 }
-
 export default App;
