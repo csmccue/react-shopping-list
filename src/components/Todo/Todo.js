@@ -8,7 +8,7 @@ import './Todo.css';
 export default function Todo() {
   const [description, setDescription] = useState('');
   const { todos, setTodos } = useTodos();
-
+  console.log(todos);
   const { user } = useContext(UserContext);
   if (!user) {
     return <Redirect to="/auth/sign-in" />;
@@ -27,8 +27,8 @@ export default function Todo() {
 
   const handleNewTodo = async () => {
     try {
-      await createTodoItem(description);
-      setTodos((prev) => [...prev, (description)]);
+      const response = await createTodoItem(description);
+      setTodos((prev) => [...prev, response]);
       setDescription('');
     } catch (e) {
       //eslint-disable-next-line no-console
@@ -51,6 +51,18 @@ export default function Todo() {
             </label>
           </div>
         ))}
+      </div>
+      <div className="field is-grouped m-2">
+        <input
+          className="input m-2"
+          type="text"
+          placeholder="new todo"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <button className="button is-primary m-2" onClick={handleNewTodo}>
+          Add
+        </button>
       </div>
     </main>
   );

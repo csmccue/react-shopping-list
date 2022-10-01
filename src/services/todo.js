@@ -1,12 +1,12 @@
 import { checkError, client } from './client';
 
 export async function getTodoItems() {
-  const response = await client.from('todos').select().order('id');
+  const response = await client.from('todos').select();
   return checkError(response);
 }
 
-export async function createTodoItem(todo) {
-  const response = await client.from('todos').insert(todo).single();
+export async function createTodoItem(description) {
+  const response = await client.from('todos').insert({ description }).single();
   return checkError(response);
 }
 
