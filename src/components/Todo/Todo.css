@@ -3,5 +3,6 @@ main {
   justify-content: center;
   align-items: center;
   background-color: bisque;
-  height: 100px;
+  flex-direction: column;
+  height: 100vh;
 }

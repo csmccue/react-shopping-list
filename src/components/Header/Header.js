@@ -19,44 +19,46 @@ export default function Header() {
   };
 
   return (
-    <nav>
-      <a
-        role="button"
-        className={`navbar-burger ${isActive ? 'is-active' : ''}`}
-        aria-label="menu"
-        aria-expanded="false"
-        data-target="navbar-list"
-        onClick={() => setIsActive((prev) => !prev)}
-      >
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-      <div className={`navbar-menu ${isActive ? 'is-active' : ''}`} id="navbar-list">
-        <div className="navbar-end">
-          <div className="navbar-item">
-            {!user && (
-              <div className="buttons">
-                <Link className="button is-primary" to="/auth/sign-up">
-                  <strong>Sign up</strong>
-                </Link>
-                <Link className="button is-light" to="/auth/sign-in">
-                  <strong>Sign in</strong>
-                </Link>
-              </div>
-            )}
-            {user && (
-              <>
-                <div>hello {user.email}</div>
-                <button className="button is-light" onClick={handleLogout}>
-                  Sign Out
-                </button>
-              </>
-            )}
+    <header>
+      <nav>
+        <a
+          role="button"
+          className={`navbar-burger ${isActive ? 'is-active' : ''}`}
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbar-list"
+          onClick={() => setIsActive((prev) => !prev)}
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div className={`navbar-menu ${isActive ? 'is-active' : ''}`} id="navbar-list">
+          <div className="navbar-end">
+            <div className="navbar-item">
+              {!user && (
+                <div className="buttons">
+                  <Link className="button is-primary" to="/auth/sign-up">
+                    <strong>Sign up</strong>
+                  </Link>
+                  <Link className="button is-light" to="/auth/sign-in">
+                    <strong>Sign in</strong>
+                  </Link>
+                </div>
+              )}
+              {user && (
+                <>
+                  <div>hello {user.email}</div>
+                  <button className="button is-light" onClick={handleLogout}>
+                    Sign Out
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-      {}
-    </nav>
+        {}
+      </nav>
+    </header>
   );
 }

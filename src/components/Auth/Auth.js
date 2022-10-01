@@ -22,7 +22,7 @@ export default function Auth() {
 
   return (
     <>
-      <div>We out here authenticating
+      <div className="auth">We out here authenticating
         <nav>
           <div>
             <NavLink to="/auth/sign-in">Sign In</NavLink>
