@@ -8,7 +8,6 @@ import './Todo.css';
 export default function Todo() {
   const [description, setDescription] = useState('');
   const { todos, setTodos } = useTodos();
-  console.log(todos);
   const { user } = useContext(UserContext);
   if (!user) {
     return <Redirect to="/auth/sign-in" />;
